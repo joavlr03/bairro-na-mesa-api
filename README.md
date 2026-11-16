@@ -16,7 +16,7 @@ Esta API cobre o módulo principal, a **Feira na Praça**:
 
 | Item | Link |
 |---|---|
-| API no Azure | `https://<PREENCHER>` |
+| API no Azure | <https://bairro-na-mesa-550283.greenwave-800c430a.brazilsouth.azurecontainerapps.io> |
 | Docker Hub | `https://hub.docker.com/r/joave/bairro-na-mesa-api` |
 | Workflow | `.github/workflows/docker-publish.yml` (aba **Actions** do repositório) |
 
@@ -151,14 +151,14 @@ Os testes usam um banco H2 em memória e não precisam do SQL Server.
 
 ## Docker Hub
 
-Imagem: `<usuario-dockerhub>/bairro-na-mesa-api`, tag `latest` (cada commit também gera uma tag com o hash).
+Imagem: `joave/bairro-na-mesa-api`, tag `latest` (cada commit também gera uma tag com o hash).
 
 ```bash
-docker pull <usuario-dockerhub>/bairro-na-mesa-api:latest
+docker pull joave/bairro-na-mesa-api:latest
 ```
 
 ```bash
-docker run -p 8080:8080 -e DB_URL="jdbc:sqlserver://host.docker.internal:1433;databaseName=bairronamesa;encrypt=true;trustServerCertificate=true" -e DB_USERNAME=sa -e DB_PASSWORD=<SuaSenhaForte> <usuario-dockerhub>/bairro-na-mesa-api:latest
+docker run -p 8080:8080 -e DB_URL="jdbc:sqlserver://host.docker.internal:1433;databaseName=bairronamesa;encrypt=true;trustServerCertificate=true" -e DB_USERNAME=sa -e DB_PASSWORD=<SuaSenhaForte> joave/bairro-na-mesa-api:latest
 ```
 
 Para construir a imagem localmente:
@@ -209,13 +209,13 @@ az containerapp env create -g rg-bairro-na-mesa -n bnm-env -l brazilsouth
 ```
 
 ```bash
-az containerapp create -g rg-bairro-na-mesa -n bairro-na-mesa-api --environment bnm-env --image docker.io/<usuario-dockerhub>/bairro-na-mesa-api:latest --target-port 8080 --ingress external --secrets db-password=<SenhaForte> --env-vars "DB_URL=jdbc:sqlserver://<nome-servidor-sql>.database.windows.net:1433;databaseName=bairronamesa;encrypt=true" DB_USERNAME=<admin> DB_PASSWORD=secretref:db-password
+az containerapp create -g rg-bairro-na-mesa -n bairro-na-mesa-api --environment bnm-env --image docker.io/joave/bairro-na-mesa-api:latest --target-port 8080 --ingress external --secrets db-password=<SenhaForte> --env-vars "DB_URL=jdbc:sqlserver://<nome-servidor-sql>.database.windows.net:1433;databaseName=bairronamesa;encrypt=true" DB_USERNAME=<admin> DB_PASSWORD=secretref:db-password
 ```
 
 O último comando mostra a URL pública da API. Para atualizar depois de uma nova imagem:
 
 ```bash
-az containerapp update -g rg-bairro-na-mesa -n bairro-na-mesa-api --image docker.io/<usuario-dockerhub>/bairro-na-mesa-api:latest
+az containerapp update -g rg-bairro-na-mesa -n bairro-na-mesa-api --image docker.io/joave/bairro-na-mesa-api:latest
 ```
 
 ## Como testar
