@@ -253,3 +253,17 @@ Resultados esperados:
 | `DELETE /api/v1/pedidos/1` | `204 No Content` |
 
 Para comprovar a persistência, reinicie a aplicação e repita um `GET`: os dados continuam no SQL Server.
+
+## Evidências no Azure
+
+Testes feitos pelo Swagger na URL pública, com a API rodando no Azure Container Apps e gravando no Azure SQL.
+
+**1. Criação de uma feira (`POST /api/v1/feiras` → `201 Created`)**
+
+![POST de feira no Azure retornando 201](docs/evidencias/azure-post-feira-201.png)
+
+**2. Consulta do registro gravado (`GET /api/v1/feiras/1` → `200 OK`)**
+
+A consulta devolve a feira criada no passo anterior, o que comprova a persistência no SQL Server.
+
+![GET de feira no Azure retornando 200](docs/evidencias/azure-get-feira-200.png)
