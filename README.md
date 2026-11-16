@@ -17,14 +17,14 @@ Esta API cobre o módulo principal, a **Feira na Praça**:
 | Item | Link |
 |---|---|
 | API no Azure | `https://<PREENCHER>` |
-| Docker Hub | `https://hub.docker.com/r/<usuario-dockerhub>/bairro-na-mesa-api` |
+| Docker Hub | `https://hub.docker.com/r/joave/bairro-na-mesa-api` |
 | Workflow | `.github/workflows/docker-publish.yml` (aba **Actions** do repositório) |
 
 ## Integrantes
 
 | Nome | RM |
 |---|---|
-| `<PREENCHER>` | `<PREENCHER>` |
+| `João Victor Oliveira Avellar` | `550283` |
 
 ## Tecnologias
 
@@ -130,13 +130,13 @@ A aplicação lê a conexão de variáveis de ambiente. Nenhuma credencial fica 
 PowerShell:
 
 ```powershell
-$env:DB_PASSWORD = "<SuaSenhaForte>"; mvn spring-boot:run
+$env:DB_PASSWORD = "Microsservices@2026"; mvn spring-boot:run
 ```
 
 Linux/macOS:
 
 ```bash
-DB_PASSWORD='<SuaSenhaForte>' mvn spring-boot:run
+DB_PASSWORD='Microsservices@2026' mvn spring-boot:run
 ```
 
 Acesse <http://localhost:8080/>.
